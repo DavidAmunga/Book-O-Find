@@ -5,6 +5,7 @@ const BookDetail = ({ book }) => {
   const createDescMarkup = description => {
     return { __html: description };
   };
+  console.log(book);
 
   return (
     <section>

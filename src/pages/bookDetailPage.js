@@ -59,7 +59,7 @@ const BookDetailPage = ({ match }) => {
           Could not fetch book
         </div>
       )}
-      {book && <BookDetail book="book" />}
+      {book && <BookDetail book={book} />}
     </>
   );
 };
