@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { bookAuthors } from "../../utils";
 
 const Book = ({ book }) => {
@@ -14,6 +15,7 @@ const Book = ({ book }) => {
           <p>{bookAuthors(book.volumeInfo.authors)}</p>
           <p>{book.volumeInfo.publishedDate}</p>
         </div>
+        <Link to={`/book/${book.id}`}>Show Details</Link>
       </div>
       <hr />
     </li>
