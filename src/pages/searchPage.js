@@ -57,19 +57,22 @@ const SearchPage = () => {
       <Header>
         <HeaderContainer>
           <LogoText>Book O Find</LogoText>
+          <HeaderSearchForm>
+            <BookSearchForm
+              onSubmitHandle={onSubmitHandle}
+              onInputChange={onInputChange}
+              search={search}
+              error={error}
+            />
+          </HeaderSearchForm>
         </HeaderContainer>
-        <HeaderSearchForm>
-          <BookSearchForm
-            onSubmitHandle={onSubmitHandle}
-            onInputChange={onInputChange}
-            search={search}
-            error={error}
-          />
-        </HeaderSearchForm>
       </Header>
-
-      <Loader loading={loading} search={search} />
-      <BookList books={books} />
+      <Container>
+        <Loader loading={loading} search={search}>
+          Fetching books for {search}
+        </Loader>
+        <BookList books={books} />
+      </Container>
     </>
   );
 };
