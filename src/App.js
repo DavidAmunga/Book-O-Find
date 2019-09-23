@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import BookList from './components/BookList';
+import axios from 'axios';
 
-function App() {
+let API_URL = `https://www.googleapis.com/books/v1/volumes`;
+
+const App = () => {
+  const [books, setBooks] = useState({ items: [] });
+  const [search, setSearch] = useState('');
+
+  const onInputChange = e => {
+    setSearch(e.target.value);
+  };
+
+  const getBooks = async () => {
+    const result = await axios.get(`${API_URL}?q=${search}`);
+    console.log(result);
+    setBooks(result.data);
+  };
+
+  const onSubmitHandle = e => {
+    e.preventDefault();
+    getBooks();
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <label>Search for Books</label>
+
+      <form onSubmit={onSubmitHandle}>
+        <input
+          name="search"
+          value={search}
+          placeholder="Search Book"
+          onChange={onInputChange}
+        />
+      </form>
+
+      <BookList books={books} />
     </div>
   );
-}
+};
 
 export default App;
