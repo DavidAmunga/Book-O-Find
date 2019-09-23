@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import ErrorText from "../layout/errorText";
 
 const Input = styled.input`
   min-width: 280px;
@@ -40,8 +41,9 @@ const BookSearchForm = ({ onSubmitHandle, search, onInputChange, error }) => {
       />
       <Button type="submit">Search</Button>
       {error && (
-        <div
-          style={{
+        <ErrorText>
+          style=
+          {{
             padding: "1rem",
             display: "inline-block",
             background: "red",
@@ -49,9 +51,8 @@ const BookSearchForm = ({ onSubmitHandle, search, onInputChange, error }) => {
             color: "white",
             borderRadius: "1em"
           }}
-        >
-          Could not fetch books
-        </div>
+          > Could not fetch books
+        </ErrorText>
       )}
     </form>
   );

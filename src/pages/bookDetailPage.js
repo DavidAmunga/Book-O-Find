@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import BookDetail from "../components/book/BookDetail";
+import ErrorText from "../components/layout/errorText";
 
 const BookDetailPage = ({ match }) => {
   const {
@@ -46,7 +47,7 @@ const BookDetailPage = ({ match }) => {
         </div>
       )}
       {error && (
-        <div
+        <ErrorText
           style={{
             padding: "1rem",
             display: "inline-block",
@@ -57,7 +58,7 @@ const BookDetailPage = ({ match }) => {
           }}
         >
           Could not fetch book
-        </div>
+        </ErrorText>
       )}
       {book && <BookDetail book={book} />}
     </>

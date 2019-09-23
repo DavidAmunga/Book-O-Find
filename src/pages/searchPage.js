@@ -4,16 +4,8 @@ import Loader from "../components/layout/Loader";
 import BookList from "../components/book/BookList";
 import axios from "axios";
 import styled from "@emotion/styled";
-
-const Header = styled.header`
-  background-color: ${props => props.theme.colors.white};
-`;
-
-const Container = styled.div`
-  max-width: 960px;
-  padding: 15px;
-  margin: 0 auto;
-`;
+import { Container } from "../components/layout/Container";
+import { Header } from "../components/layout/Header";
 
 const HeaderContainer = styled(Container)`
   display: flex;
