@@ -1,7 +1,7 @@
 import React from "react";
 import { css, jsx } from "@emotion/core";
 
-const Loader: React.FunctionComponent<{}> = ({ loading, children }) => {
+const Loader = ({ loading, children }) => {
   return (
     <>
       {loading && (
