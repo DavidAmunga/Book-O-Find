@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { bookAuthors } from "../../utils";
 
 const Book = ({ book }) => {
+  console.log(book);
   return (
     <li>
       <div>

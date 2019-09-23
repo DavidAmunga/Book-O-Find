@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import BookSearchForm from "../components/book/BookSearchForm";
 import Loader from "../components/layout/Loader";
 import BookList from "../components/book/BookList";
-import Axios from "axios";
+import axios from "axios";
 
 const SearchPage = () => {
   const [search, setSearch] = useState("");
@@ -17,7 +17,7 @@ const SearchPage = () => {
     setLoading(true);
     setError(false);
     try {
-      const result = await Axios.get(`${API_URL}?q=${search}`);
+      const result = await axios.get(`${API_URL}?q=${search}`);
       setBooks(result.data);
     } catch (error) {
       setError(true);
@@ -38,7 +38,7 @@ const SearchPage = () => {
       <label>Search for Books</label>
 
       <BookSearchForm
-        onSubmitHandler={onSubmitHandle}
+        onSubmitHandle={onSubmitHandle}
         onInputChange={onInputChange}
         search={search}
         error={error}
