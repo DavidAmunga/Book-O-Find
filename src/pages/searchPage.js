@@ -3,6 +3,33 @@ import BookSearchForm from "../components/book/BookSearchForm";
 import Loader from "../components/layout/Loader";
 import BookList from "../components/book/BookList";
 import axios from "axios";
+import styled from "@emotion/styled";
+
+const Header = styled.header`
+  background-color: ${props => props.theme.colors.white};
+`;
+
+const Container = styled.div`
+  max-width: 960px;
+  padding: 15px;
+  margin: 0 auto;
+`;
+
+const HeaderContainer = styled(Container)`
+  display: flex;
+  align-items: center;
+  @media (max-width: 778px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`;
+
+const LogoText = styled.h3`
+  margin: 0;
+`;
+const HeaderSearchForm = styled.div`
+  margin-left: auto;
+`;
 
 const SearchPage = () => {
   const [search, setSearch] = useState("");
@@ -34,19 +61,24 @@ const SearchPage = () => {
     setSearch(e.target.value);
   };
   return (
-    <div className="App">
-      <label>Search for Books</label>
-
-      <BookSearchForm
-        onSubmitHandle={onSubmitHandle}
-        onInputChange={onInputChange}
-        search={search}
-        error={error}
-      />
+    <>
+      <Header>
+        <HeaderContainer>
+          <LogoText>Book O Find</LogoText>
+        </HeaderContainer>
+        <HeaderSearchForm>
+          <BookSearchForm
+            onSubmitHandle={onSubmitHandle}
+            onInputChange={onInputChange}
+            search={search}
+            error={error}
+          />
+        </HeaderSearchForm>
+      </Header>
 
       <Loader loading={loading} search={search} />
       <BookList books={books} />
-    </div>
+    </>
   );
 };
 

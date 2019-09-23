@@ -1,20 +1,21 @@
 import React from "react";
+import { css, jsx } from "@emotion/core";
 
-const Loader = ({ loading, search }) => {
+const Loader: React.FunctionComponent<{}> = ({ loading, children }) => {
   return (
     <>
       {loading && (
         <div
-          style={{
-            padding: "1rem",
-            display: "inline-block",
-            background: "green",
-            marginTop: "2em",
-            color: "white",
-            borderRadius: "1em"
-          }}
+          css={css`
+            padding: 1rem;
+            display: inline-block;
+            background: green;
+            margin-top: 2em;
+            color: white;
+            border-radius: 1em;
+          `}
         >
-          Searching for "<strong>{search}</strong>..."
+          {children}
         </div>
       )}
     </>
